@@ -1,7 +1,10 @@
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
+
+import services.Cidade;
+import services.CidadesManagerService;
+import services.ICidadesManagerService;
 
 public class SelecaoInvolves {
 
@@ -11,33 +14,33 @@ public class SelecaoInvolves {
 	  }
 
 	  public void run() {
-	    String arquivoCSV = "C:\\Users\\daniel.martins\\Documents\\GitHub\\selecaoinvolves\\cidades.csv";
-	    BufferedReader br = null;
-	    String linha = "";
-	    String csvDivisor = ",";
-	    try {
-
-	        br = new BufferedReader(new FileReader(arquivoCSV));
-	        while ((linha = br.readLine()) != null) {
-	            String[] cidade = linha.split(csvDivisor);
-	            System.out.println("País [ibge_id= " + cidade[0] 
-	                                 + " , name=" + cidade[1] + "]");
-
-	        }
-
-	    } catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        if (br != null) {
-	            try {
-	                br.close();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
+		  ICidadesManagerService service = new CidadesManagerService();
+		  String caminho = "C:\\Users\\daniel.martins\\Documents\\GitHub\\selecaoinvolves\\cidades.csv";
+		  //String caminho = "C:\\Users\\daniel.martins\\Documents\\GitHub\\selecaoinvolves\\cidadesJson.json";
+		  //String caminho = "C:\\Users\\daniel.martins\\Documents\\GitHub\\selecaoinvolves\\cidadesXml.xml";
+		  List<Cidade> cidades;
+		  Cidade cidade;
+		    try {	
+		    	cidades = service.LerCidades(caminho);
+		        for(int i = 0; i < cidades.size(); i++) {
+		        	cidade = cidades.get(i);
+		        	System.out.println("Cidade [ibge_id= " + cidade.getIbgeId() 
+                            			+ " , uf=" + cidade.getUf()
+							        	+ " , name=" + cidade.getName()
+							        	+ " , capital=" + cidade.getCapital()
+							        	+ " , lon=" + cidade.getLongitude()
+							        	+ " , lat=" + cidade.getLatitude()
+							        	+ " , no_accents=" + cidade.getNoAccents()
+							        	+ " , alternative_names=" + cidade.getAlternativeNames()
+							        	+ " , microregion=" + cidade.getMicroRegion()
+							        	+ " , mesoregion=" + cidade.getMesoRegion() + "]");
+		        }
+	
+		    } catch (FileNotFoundException e) {
+		        e.printStackTrace();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
 	  }
 
 }

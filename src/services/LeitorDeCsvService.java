@@ -17,6 +17,7 @@ public class LeitorDeCsvService implements ILeitorDeCidades {
 	    String csvDivisor = ",";
 	    try {
 	        buffer = new BufferedReader(new FileReader(caminho));
+	        linha = buffer.readLine();
 	        while ((linha = buffer.readLine()) != null) {	        	
 	            String[] cidade = linha.split(csvDivisor);
 	            Cidade city = new Cidade(cidade[0], cidade[1], cidade[2], cidade[3], cidade[4], cidade[5], cidade[6], cidade[7], cidade[8], cidade[9]);

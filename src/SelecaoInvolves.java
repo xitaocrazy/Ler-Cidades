@@ -15,7 +15,7 @@ public class SelecaoInvolves {
 
 	  public void run() {
 		  ICidadesManagerService service = new CidadesManagerService();
-		  String caminho = "C:\\Users\\daniel.martins\\Documents\\GitHub\\selecaoinvolves\\cidades.csv";
+		  String caminho = "C:\\Users\\daniel.martins\\Documents\\GitHub\\Ler-Cidades\\cidades-fontes\\cidades.csv";
 		  //String caminho = "C:\\Users\\daniel.martins\\Documents\\GitHub\\selecaoinvolves\\cidadesJson.json";
 		  //String caminho = "C:\\Users\\daniel.martins\\Documents\\GitHub\\selecaoinvolves\\cidadesXml.xml";
 		  List<Cidade> cidades;

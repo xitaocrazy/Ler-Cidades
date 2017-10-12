@@ -107,4 +107,63 @@ public class Cidade {
 	public void setMesoRegion(String mesoRegion) {
 		this.name = mesoRegion;
 	}
+	
+	@Override
+	public String toString() {
+		return "Cidade [ibge_id= " + this.ibgeId 
+				+ " , uf=" + this.uf
+		    	+ " , name=" + this.name
+		    	+ " , capital=" + this.capital
+		    	+ " , lon=" + this.longitude
+		    	+ " , lat=" + this.latitude
+		    	+ " , no_accents=" + this.noAccents
+		    	+ " , alternative_names=" + this.alternativeNames
+		    	+ " , microregion=" + this.microRegion
+		    	+ " , mesoregion=" + this.mesoRegion + "]";
+	}
+
+	@Override
+	public int hashCode() {
+	    int hashCode = 1;
+	    hashCode = (hashCode * 31) ^ (this.ibgeId != null ? this.ibgeId.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.uf != null ? this.uf.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.name != null ? this.name.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.capital != null ? this.capital.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.longitude != null ? this.longitude.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.latitude != null ? this.latitude.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.noAccents != null ? this.noAccents.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.alternativeNames != null ? this.alternativeNames.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.microRegion != null ? this.microRegion.hashCode() : 0);
+	    hashCode = (hashCode * 31) ^ (this.mesoRegion != null ? this.mesoRegion.hashCode() : 0);
+	    return hashCode;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (obj == null){
+	    	return false;
+	    }      
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    
+	    Cidade other = (Cidade) obj;
+	    if (!this.ibgeId.equals(other.getIbgeId()) || 
+	    	!this.uf.equals(other.getUf()) ||
+	    	!this.name.equals(other.getName()) ||
+	    	!this.capital.equals(other.getCapital()) ||
+	    	!this.longitude.equals(other.getLongitude()) ||
+	    	!this.latitude.equals(other.getLatitude()) ||
+	    	!this.noAccents.equals(other.getNoAccents()) ||
+	    	!this.alternativeNames.equals(other.getAlternativeNames()) ||
+	    	!this.microRegion.equals(other.getMicroRegion()) ||
+	    	!this.mesoRegion.equals(other.getMesoRegion())) {
+	        return false;
+	    }
+	    	    
+	    return true;
+	}
 }

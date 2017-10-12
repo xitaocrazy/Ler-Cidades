@@ -12,7 +12,7 @@ import models.Cidade;
 public class LeitorDeCsvService implements ILeitorDeCidades {
 
 	@Override
-	public List<Cidade> LerCidades(String caminho) throws IOException, FileNotFoundException {
+	public List<Cidade> LeiaCidades(String caminho) throws IOException, FileNotFoundException {
 		List<Cidade> cidades = new ArrayList<Cidade>();
 		BufferedReader buffer = null;
 	    String linha = "";

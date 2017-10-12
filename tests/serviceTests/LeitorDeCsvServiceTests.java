@@ -23,7 +23,7 @@ class LeitorDeCsvServiceTests {
 		cidadesEsperadas.add(new Cidade("5300108", "DF", "Brasília", "true", "-47.887905478", "-15.7940873619", "Brasilia", "", "Brasília", "Distrito Federal"));
 		
 		List<Cidade> cidadesLidas;
-		cidadesLidas = leitor.LerCidades(caminho);
+		cidadesLidas = leitor.LeiaCidades(caminho);
 		
 		assertEquals(cidadesEsperadas.size(), cidadesLidas.size(), "A lista possui mais valores do que o esperado.");
 		assertAll("cidadesLidas",
@@ -37,7 +37,7 @@ class LeitorDeCsvServiceTests {
 		String caminho = "C:\\cidades.csv";
 		LeitorDeCsvService leitor = new LeitorDeCsvService();
 
-        Throwable exception = assertThrows(FileNotFoundException.class, () -> leitor.LerCidades(caminho));
+        Throwable exception = assertThrows(FileNotFoundException.class, () -> leitor.LeiaCidades(caminho));
         assertEquals(FileNotFoundException.class, exception.getClass());
         assertEquals("C:\\cidades.csv (O sistema não pode encontrar o arquivo especificado)", exception.getMessage());
     }

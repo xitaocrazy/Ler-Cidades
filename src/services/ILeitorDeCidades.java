@@ -7,5 +7,5 @@ import java.util.List;
 import models.Cidade;
 
 public interface ILeitorDeCidades {
-	List<Cidade> LerCidades(String caminho) throws IOException, FileNotFoundException;
+	List<Cidade> LeiaCidades(String caminho) throws IOException, FileNotFoundException;
 }

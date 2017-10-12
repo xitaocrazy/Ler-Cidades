@@ -11,13 +11,13 @@ import models.Cidade;
 public class CidadesManagerService implements ICidadesManagerService {
 
 	@Override
-	public List<Cidade> LerCidades(String caminho) throws IOException, FileNotFoundException, InvalidParameterException {
+	public List<Cidade> LeiaCidades(String caminho) throws IOException, FileNotFoundException, InvalidParameterException {
 		String[] partesDoCaminho = caminho.split(Pattern.quote("\\"));
 		String parteFinal = partesDoCaminho[partesDoCaminho.length - 1];
 		String[] dadosParteFinal = parteFinal.split(Pattern.quote("."));
 		String extensao = dadosParteFinal[dadosParteFinal.length - 1];
 		ILeitorDeCidades leitor = LeitorDeCidadesFactory.CrieInstanciaDeLeitor(extensao);
-		List<Cidade> cidades = leitor.LerCidades(caminho);
+		List<Cidade> cidades = leitor.LeiaCidades(caminho);
 		return cidades;
 	}
 }

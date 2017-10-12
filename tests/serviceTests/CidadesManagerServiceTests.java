@@ -25,7 +25,7 @@ class CidadesManagerServiceTests {
 		cidadesEsperadas.add(new Cidade("5300108", "DF", "Brasília", "true", "-47.887905478", "-15.7940873619", "Brasilia", "", "Brasília", "Distrito Federal"));
 		CidadesManagerService cidadesManager = new CidadesManagerService();
 		
-		List<Cidade> cidadesLidas = cidadesManager.LerCidades(caminho);
+		List<Cidade> cidadesLidas = cidadesManager.LeiaCidades(caminho);
 		
 		assertEquals(cidadesEsperadas.size(), cidadesLidas.size(), "A lista possui mais valores do que o esperado.");
 		assertAll("cidadesLidas",

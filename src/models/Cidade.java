@@ -110,16 +110,9 @@ public class Cidade {
 	
 	@Override
 	public String toString() {
-		return "Cidade [ibge_id= " + this.ibgeId 
-				+ " , uf=" + this.uf
-		    	+ " , name=" + this.name
-		    	+ " , capital=" + this.capital
-		    	+ " , lon=" + this.longitude
-		    	+ " , lat=" + this.latitude
-		    	+ " , no_accents=" + this.noAccents
-		    	+ " , alternative_names=" + this.alternativeNames
-		    	+ " , microregion=" + this.microRegion
-		    	+ " , mesoregion=" + this.mesoRegion + "]";
+		String cidade = String.format("Cidade [ibge_id= %s, uf= %s, name= %s, capital= %s, lon= %s, lat= %s, no_accents= %s, alternative_names= %s, microregion= %s, mesoregion= %s]", 
+												this.ibgeId, this.uf, this.name, this.capital, this.longitude, this.latitude, this.noAccents, this.alternativeNames, this.microRegion, this.mesoRegion);
+		return cidade;
 	}
 
 	@Override

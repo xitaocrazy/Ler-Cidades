@@ -12,7 +12,8 @@ public class LeitorDeCidadesFactory {
 		case "teste": //Como não podia usar nenhum framework para mock, tive que fazer referência ao projeto de testes para usar a classe que faz o mock do comportamento de leitura.
 			return new LeitorTesteService();
 		default:
-			throw new InvalidParameterException("Infelizmente o tipo de arquivo ." + extensao + " não é suportado.");
+			String mensagem = String.format("Infelizmente o tipo de arquivo .%s não é suportado.", extensao);
+			throw new InvalidParameterException(mensagem);
 		}
 		
 	}

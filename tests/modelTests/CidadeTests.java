@@ -208,7 +208,7 @@ class CidadeTests {
 
 	@Test
 	void ToStringDeveRetornarOValorEsperadoTest() {
-		String valorEsperado = "Cidade [ibge_id= 1100015 , uf=RO , name=Alta Floresta D'Oeste , capital= , lon=-61.9998238963 , lat=-11.9355403048 , no_accents=Alta Floresta D'Oeste , alternative_names= , microregion=Cacoal , mesoregion=Leste Rondoniense]";
+		String valorEsperado = "Cidade [ibge_id= 1100015, uf= RO, name= Alta Floresta D'Oeste, capital= , lon= -61.9998238963, lat= -11.9355403048, no_accents= Alta Floresta D'Oeste, alternative_names= , microregion= Cacoal, mesoregion= Leste Rondoniense]";
 		
 		String valorRetornado = cidade1.toString();
 		

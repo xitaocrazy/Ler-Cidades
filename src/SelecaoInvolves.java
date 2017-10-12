@@ -71,7 +71,8 @@ public class SelecaoInvolves {
 	        	  	case "sair":
 	        	  		System.exit(0);
 	        	  	case "count *":
-	        	  		System.out.println("A lista possui " + this.cidades.size() + " registros");
+	        	  		String mensagem = String.format("A lista possui %d registros.", this.cidades.size());
+	        	  		System.out.println(mensagem);
 	        	  		break;
 	        	  	case "distinct":
 	        	  		System.out.println(propriedade);

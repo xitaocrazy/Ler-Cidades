@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import services.Cidade;
+import models.Cidade;
 import services.CidadesManagerService;
 import services.ICidadesManagerService;
 

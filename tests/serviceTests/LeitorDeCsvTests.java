@@ -7,11 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import services.Cidade;
+import models.Cidade;
 import services.LeitorDeCsvService;
 
 class LeitorDeCsvTests {
@@ -34,4 +32,23 @@ class LeitorDeCsvTests {
             );
 	}
 
+	@Test
+    void LerCidadesDeveRetornarFileNotFoundExceptionQuandoNaoEncontrarOArquivoTest() {
+		String caminho = "C:\\cidades.csv";
+		LeitorDeCsvService leitor = new LeitorDeCsvService();
+
+        Throwable exception = assertThrows(FileNotFoundException.class, () -> leitor.LerCidades(caminho));
+        assertEquals(FileNotFoundException.class, exception.getClass());
+        assertEquals("C:\\cidades.csv (O sistema não pode encontrar o arquivo especificado)", exception.getMessage());
+    }
+	
+	//Não consegui provocar um IOException sem ter um framework para mock
+	//@Test
+    //void LerCidadesDeveRetornarIOExceptionQuandoOcorrerErroDuranteALeituraTest() {
+	//	String caminho = "C:\\cidades.csv";
+	//	LeitorDeCsvService leitor = new LeitorDeCsvService();
+    //
+    //    Throwable exception = assertThrows(IOException.class, () -> leitor.LerCidades(caminho));
+    //    assertEquals(IOException.class, exception.getClass());
+    //}
 }

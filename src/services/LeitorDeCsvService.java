@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Cidade;
+
 public class LeitorDeCsvService implements ILeitorDeCidades {
 
 	@Override

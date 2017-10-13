@@ -12,6 +12,7 @@ import services.ICidadesManagerService;
 public class SelecaoInvolves {
 	  private static final Scanner SCANNER = new Scanner(System.in);
 	  private List<Cidade> cidades;
+	  
 	  public static void main(String[] args) {
 		  SelecaoInvolves obj = new SelecaoInvolves();
 		  obj.run();
@@ -42,16 +43,20 @@ public class SelecaoInvolves {
 		  }
 	  }
 
-	  private void PrintListaDeCidades() {
-		  for(int i = 0; i < this.cidades.size(); i++) {
-			  Cidade cidade = this.cidades.get(i);
+	  private void PrintListaDeCidades(List<Cidade> cidades) {
+		  for(int i = 0; i < cidades.size(); i++) {
+			  Cidade cidade = cidades.get(i);
 			  System.out.println(cidade.toString());
 		  }
 	  }
 	  
 	  private void AguardeComando() {
+		  ICidadesManagerService service = new CidadesManagerService();
+		  String propriedade = "";
+		  String valor = "";
 		  while(true) {
-			  String propriedade = "";
+			  propriedade = "";
+			  valor = "";
 	          System.out.println("Por favor informe o comando desejado:");
 	          System.out.println("sair - fecha a aplicação.");
 	          System.out.println("count * - escreve a contagem total de registros importados.");
@@ -63,9 +68,17 @@ public class SelecaoInvolves {
 	          if (!input.isEmpty()) {
 	        	  if (input.contains("distinct")) {
 	        		  String[] splitComando = input.split(Pattern.quote(" "));
-	        		  propriedade = splitComando[2];
+	        		  propriedade = splitComando.length > 2 ? splitComando[2] : "";
 	        		  input = "distinct";
-	        	  }	        	  
+	        	  }	      
+	        	  
+	        	  if (input.contains("filter")) {
+	        		  String[] splitComando = input.split(Pattern.quote(" "));
+	        		  propriedade = splitComando.length > 1 ? splitComando[1] : "";
+	        		  valor = splitComando.length > 2 ? splitComando[2] : "";
+	        		  
+	        		  input = "filter";
+	        	  }
 	        	  
 	        	  switch(input) {
 	        	  	case "sair":
@@ -76,6 +89,11 @@ public class SelecaoInvolves {
 	        	  		break;
 	        	  	case "distinct":
 	        	  		System.out.println(propriedade);
+	        	  		break;
+	        	  	case "filter":
+	        	  		System.out.println("ibge_id,uf,name,capital,lon,lat,no_accents,alternative_names,microregion,mesoregion");
+	        	  		List<Cidade> cidades = service.FiltreAListaDeCidadesPeloCampoEValor(this.cidades, propriedade, valor);
+	        	  		this.PrintListaDeCidades(cidades);
 	        	  		break;
 	        		default:
 	        			System.out.println("Comando inválido");

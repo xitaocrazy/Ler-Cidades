@@ -21,22 +21,47 @@ public class CidadesManagerService implements ICidadesManagerService {
 		return cidades;
 	}
 	
-	public List<Cidade> BusqueItensDistinguindoPeloCampo(List<Cidade> cidades, String campo){
-		List<Cidade> cidadesFiltradas = cidades.stream().filter(cidade -> cidade.getName() != null && !cidade.getName().equals("")).collect(Collectors.toList());
-		return cidadesFiltradas;
+	public int BusqueQuantidadeDeItensDistintosPeloCampo(List<Cidade> cidades, String campo){
+		List<String> campos;
+			switch (campo) {
+			case "ibge_id":
+				campos = cidades.stream().map(cidade -> cidade.getIbgeId()).collect(Collectors.toList());
+				break;
+			case "uf":
+				campos = cidades.stream().map(cidade -> cidade.getUf()).collect(Collectors.toList());
+				break;
+			case "name":
+				campos = cidades.stream().map(cidade -> cidade.getName()).collect(Collectors.toList());
+				break;
+			case "capital":
+				campos = cidades.stream().map(cidade -> cidade.getCapital()).collect(Collectors.toList());
+				break;
+			case "lon":
+				campos = cidades.stream().map(cidade -> cidade.getLongitude()).collect(Collectors.toList());
+				break;
+			case "lat":
+				campos = cidades.stream().map(cidade -> cidade.getLatitude()).collect(Collectors.toList());
+				break;
+			case "no_accents":
+				campos = cidades.stream().map(cidade -> cidade.getNoAccents()).collect(Collectors.toList());
+				break;
+			case "alternative_names":
+				campos = cidades.stream().map(cidade -> cidade.getAlternativeNames()).collect(Collectors.toList());
+				break;
+			case "microregion":
+				campos = cidades.stream().map(cidade -> cidade.getMicroRegion()).collect(Collectors.toList());
+				break;
+			case "mesoregion":
+				campos = cidades.stream().map(cidade -> cidade.getMesoRegion()).collect(Collectors.toList());
+				break;
+			default:
+				String mensagem = String.format("O campo .%s não é válido.", campo);
+				throw new InvalidParameterException(mensagem);
+		}
 		
-		
-		// Create the list with duplicates. 
-		//List<String> listAll = Arrays.asList("CO2", "CH4", "SO2", "CO2", "CH4", "SO2", "CO2", "CH4", "SO2"); 
-		// Create a list with the distinct elements using stream. 
-		//List<String> listDistinct = listAll.stream().distinct().collect(Collectors.toList()); 
-		// Display them to terminal using stream::collect with a build in Collector. 
-		//String collectAll = listAll.stream().collect(Collectors.joining(", ")); 
-		//System.out.println(collectAll); //=> CO2, CH4, SO2, CO2, CH4 etc.. 
-		//String collectDistinct = listDistinct.stream().collect(Collectors.joining(", ")); 
-		//System.out.println(collectDistinct); //=> CO2, CH4, SO2
+		List<String> camposUnicos = campos.stream().distinct().collect(Collectors.toList()); 
+		return camposUnicos.size();
 	}
-	
 	
 	public List<Cidade> FiltreAListaDeCidadesPeloCampoEValor(List<Cidade> cidades, String campo, String valor){
 		List<Cidade> cidadesFiltradas;

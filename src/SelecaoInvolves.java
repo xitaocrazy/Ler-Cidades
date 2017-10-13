@@ -54,6 +54,7 @@ public class SelecaoInvolves {
 		  ICidadesManagerService service = new CidadesManagerService();
 		  String propriedade = "";
 		  String valor = "";
+		  String mensagem = "";
 		  while(true) {
 			  propriedade = "";
 			  valor = "";
@@ -84,11 +85,13 @@ public class SelecaoInvolves {
 	        	  	case "sair":
 	        	  		System.exit(0);
 	        	  	case "count *":
-	        	  		String mensagem = String.format("A lista possui %d registros.", this.cidades.size());
+	        	  		mensagem = String.format("A lista possui %d registros.", this.cidades.size());
 	        	  		System.out.println(mensagem);
 	        	  		break;
 	        	  	case "distinct":
-	        	  		System.out.println(propriedade);
+	        	  		int quantidade = service.BusqueQuantidadeDeItensDistintosPeloCampo(this.cidades, propriedade);
+	        	  		mensagem = String.format("A lista possui %d registros diferentes para o campo %s.", quantidade, propriedade);
+	        	  		System.out.println(mensagem);
 	        	  		break;
 	        	  	case "filter":
 	        	  		System.out.println("ibge_id,uf,name,capital,lon,lat,no_accents,alternative_names,microregion,mesoregion");

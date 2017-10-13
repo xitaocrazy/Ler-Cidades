@@ -8,6 +8,6 @@ import models.Cidade;
 
 public interface ICidadesManagerService  {
 	List<Cidade> LeiaCidades(String caminho) throws IOException, FileNotFoundException;
-	List<Cidade> BusqueItensDistinguindoPeloCampo(List<Cidade> cidades, String campo);
+	int BusqueQuantidadeDeItensDistintosPeloCampo(List<Cidade> cidades, String campo);
 	List<Cidade> FiltreAListaDeCidadesPeloCampoEValor(List<Cidade> cidades, String campo, String valor);
 }

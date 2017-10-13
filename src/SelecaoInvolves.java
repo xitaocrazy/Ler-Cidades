@@ -67,7 +67,7 @@ public class SelecaoInvolves {
 	          if (!input.isEmpty()) {
 	        	  if (input.contains("distinct")) {
 	        		  String[] splitComando = input.split(Pattern.quote(" "));
-	        		  propriedade = splitComando.length > 1 ? splitComando[1] : "";
+	        		  propriedade = splitComando.length > 2 ? splitComando[2] : "";
 	        		  input = "distinct";
 	        	  }	      
 	        	  

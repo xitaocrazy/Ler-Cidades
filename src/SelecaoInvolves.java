@@ -32,8 +32,7 @@ public class SelecaoInvolves {
 		  List<Cidade> cidades = new ArrayList<Cidade>();
 		  ICidadesManagerService service = new CidadesManagerService();
 		  try {	
-			  cidades = service.LeiaCidades(caminho);
-	
+			  cidades = service.LeiaCidades(caminho);	
 		  } catch (FileNotFoundException e) {
 			  e.printStackTrace();
 		  } catch (IOException e) {
@@ -44,10 +43,9 @@ public class SelecaoInvolves {
 	  }
 
 	  private void PrintListaDeCidades(List<Cidade> cidades) {
-		  for(int i = 0; i < cidades.size(); i++) {
-			  Cidade cidade = cidades.get(i);
+		  for(Cidade cidade: cidades){
 			  System.out.println(cidade.toString());
-		  }
+		  }		  
 	  }
 	  
 	  private void AguardeComando() {
